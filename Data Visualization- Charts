@@ -1,0 +1,12 @@
+#Create a Bar Plot
+#Plot x=Smoke, fill=Exer, Position=Dodge, facet=Sex, x-label=Smoker, y-label=Counts, Title=The exercise habits of Male and Female Students that Smoke
+
+ setwd("C:/Users/repor/OneDrive/Documents/Adobe/ITS")
+> ddata <- read.csv("dataset_student_survey_data.csv")
+> ddata$Smoke <- as.factor(ddata$Smoke)
+> ddata$Exer <- as.factor(ddata$Exer)
+> ddata$Sex <- as.factor(ddata$Sex)
+> ggplot(ddata, aes(x=Smoke, fill=Exer)) + facet_wrap(~Sex) +geom_bar(position = "dodge") + labs(x="Smoker", y="Counts", title = "The exercise habits of Male and Female Students that Smoke")
+
+
+
