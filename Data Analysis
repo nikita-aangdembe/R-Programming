@@ -1,4 +1,4 @@
-#Create a summary of stats for the dataset
+###Create a summary of stats for the dataset
 
 setwd("C:/Users/repor/OneDrive/Documents/Adobe/ITS")
 adata <- read.csv("dataset_price_personal_computers.csv")
@@ -21,7 +21,7 @@ summary(adata)
  
 
 
-#Create a correlation of stats for the dataset
+###Create a correlation of stats for the dataset
 adata$cd <- gsub("no", "0", adata$cd)
 adata$cd <- gsub("yes", "1", adata$cd)
 adata$multi <- gsub("no", "0", adata$multi)
