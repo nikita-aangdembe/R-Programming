@@ -58,25 +58,84 @@ trend    0.44578018  0.210907431  0.04210738 -0.31855251  1.00000000
 
 
 
-#Show Min, Max, Median, and Mean of the Price
+###Show Min, Max, Median, and Mean of the Price
+min(~price, data = adatatrans)
+[1] 949
+max(~price, data = adatatrans)
+[1] 5399
+median(~price, data = adatatrans)
+[1] 2144
+mean(~price, data = adatatrans)
+[1] 2219.577
+favstats(~price, data = adatatrans)
+ min   Q1 median   Q3  max     mean      sd    n missing
+ 949 1794   2144 2595 5399 2219.577 580.804 6259       0
+ 
 
 
-#Show the correlation values between Price, Ram, and Ads
-
-
-#Create a subset of the dataset with only Price, CD, and Premium
-
-
-#Create a subset of the dataset with only Price, HD, and Ram where Price is greater than or equal to $1750
-
-
-
-#What percentage of Premium computers were sold?
+###Show the correlation values between Price, Ram, and Ads
+cor(adatatrans[c("price", "ram", "ads")])
+           price        ram         ads
+price 1.00000000  0.6227482  0.05454047
+ram   0.62274824  1.0000000 -0.18166971
+ads   0.05454047 -0.1816697  1.00000000
 
 
 
-#How many Premium computers with CDs were sold?
+###Create a subset of the dataset with only Price, CD, and Premium
+adatatrans.sub0 <- subset(adatatrans, select = c("price", "cd", "premium"))
+View(adatatrans.sub0)
+
+
+###Create a subset of the dataset with only Price, HD, and Ram where Price is greater than or equal to $1750
+adatatrans.sub1 <- subset(adatatrans, select = c("price", "hd", "ram"))
+View(adatatrans.sub1)
+adatatrans.sub1 <- subset(adatatrans, price >=1750, select = c("price","hd","ram"))
+View(adatatrans.sub1)
 
 
 
-#How many Premium computers with CDs priced over $2000 were sold? Show using conditional table analysis
+###What percentage of Premium computers were sold?
+tally(~premium, data = adatatrans, margins = TRUE)
+
+premium
+    0     1 Total 
+  612  5647  6259 
+  
+> tally(~premium, data = adatatrans, margins = TRUE, format = "perc")
+
+premium
+        0         1     Total 
+  9.77792  90.22208 100.00000 
+  
+
+
+###How many Premium computers with CDs were sold?
+tally(~premium+cd, data = adatatrans, margins = TRUE
+
+       cd
+premium    0    1 Total
+  0      528   84   612
+  1     2823 2824  5647
+  Total 3351 2908  6259
+  
+
+
+###How many Premium computers with CDs priced over $2000 were sold? Show using conditional table analysis
+tally(~premium+cd|price>2000, data = adatatrans, margins = TRUE)
+
+, , price > 2000 = TRUE
+
+       cd
+premium    0    1 Total
+  0      329   65   394
+  1     1295 1937  3232
+  Total 1624 2002  3626
+
+, , price > 2000 = FALSE
+
+       cd
+premium    0    1 Total
+  0      199   19   218
+  1     1528  887  2415
+  Total 1727  906  2633
