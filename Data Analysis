@@ -1,0 +1,82 @@
+#Create a summary of stats for the dataset
+
+setwd("C:/Users/repor/OneDrive/Documents/Adobe/ITS")
+adata <- read.csv("dataset_price_personal_computers.csv")
+View(adata)
+summary(adata)
+       X            price          speed              hd              ram        
+ Min.   :   1   Min.   : 949   Min.   : 25.00   Min.   :  80.0   Min.   : 2.000  
+ 1st Qu.:1566   1st Qu.:1794   1st Qu.: 33.00   1st Qu.: 214.0   1st Qu.: 4.000  
+ Median :3130   Median :2144   Median : 50.00   Median : 340.0   Median : 8.000  
+ Mean   :3130   Mean   :2220   Mean   : 52.01   Mean   : 416.6   Mean   : 8.287  
+ 3rd Qu.:4694   3rd Qu.:2595   3rd Qu.: 66.00   3rd Qu.: 528.0   3rd Qu.: 8.000  
+ Max.   :6259   Max.   :5399   Max.   :100.00   Max.   :2100.0   Max.   :32.000  
+     screen        cd       multi      premium         ads            trend      
+ Min.   :14.00   no :3351   no :5386   no : 612   Min.   : 39.0   Min.   : 1.00  
+ 1st Qu.:14.00   yes:2908   yes: 873   yes:5647   1st Qu.:162.5   1st Qu.:10.00  
+ Median :14.00                                    Median :246.0   Median :16.00  
+ Mean   :14.61                                    Mean   :221.3   Mean   :15.93  
+ 3rd Qu.:15.00                                    3rd Qu.:275.0   3rd Qu.:21.50  
+ Max.   :17.00                                    Max.   :339.0   Max.   :35.00  
+ 
+
+
+#Create a correlation of stats for the dataset
+adata$cd <- gsub("no", "0", adata$cd)
+adata$cd <- gsub("yes", "1", adata$cd)
+adata$multi <- gsub("no", "0", adata$multi)
+adata$multi <- gsub("yes", "1", adata$multi)
+adata$premium <- gsub("no","0", adata$premium)
+adata$premium <- gsub("yes","1", adata$premium)
+adatatrans <- transform (adata, cd = as.numeric(cd), multi = as.numeric(multi), premium = as.numeric(premium))
+View(adatatrans)
+cor(adatatrans)
+                  X       price       speed          hd         ram       screen
+X        1.00000000 -0.19992353  0.38856624  0.55549224  0.26537590  0.184699500
+price   -0.19992353  1.00000000  0.30097646  0.43025779  0.62274824  0.296041474
+speed    0.38856624  0.30097646  1.00000000  0.37230410  0.23476050  0.189074122
+hd       0.55549224  0.43025779  0.37230410  1.00000000  0.77772630  0.232801530
+ram      0.26537590  0.62274824  0.23476050  0.77772630  1.00000000  0.208953740
+screen   0.18469950  0.29604147  0.18907412  0.23280153  0.20895374  1.000000000
+cd       0.45864221  0.19734334  0.25825980  0.50357041  0.43850441  0.129487662
+multi    0.21806644 -0.01665139  0.08417193  0.09280483  0.04549689 -0.001740414
+premium  0.03736416 -0.08069636  0.11420791  0.19692359  0.19714459  0.018745223
+ads     -0.27271422  0.05454047 -0.21523206 -0.32322200 -0.18166971 -0.093919429
+trend    0.98981842 -0.19998694  0.40543833  0.57779013  0.27684384  0.188614445
+                 cd        multi     premium         ads       trend
+X        0.45864221  0.218066438  0.03736416 -0.27271422  0.98981842
+price    0.19734334 -0.016651388 -0.08069636  0.05454047 -0.19998694
+speed    0.25825980  0.084171934  0.11420791 -0.21523206  0.40543833
+hd       0.50357041  0.092804830  0.19692359 -0.32322200  0.57779013
+ram      0.43850441  0.045496894  0.19714459 -0.18166971  0.27684384
+screen   0.12948766 -0.001740414  0.01874522 -0.09391943  0.18861444
+cd       1.00000000  0.432179298  0.21607660 -0.06109108  0.44578018
+multi    0.43217930  1.000000000  0.12477474 -0.03039426  0.21090743
+premium  0.21607660  0.124774741  1.00000000 -0.15202274  0.04210738
+ads     -0.06109108 -0.030394260 -0.15202274  1.00000000 -0.31855251
+trend    0.44578018  0.210907431  0.04210738 -0.31855251  1.00000000
+
+
+
+#Show Min, Max, Median, and Mean of the Price
+
+
+#Show the correlation values between Price, Ram, and Ads
+
+
+#Create a subset of the dataset with only Price, CD, and Premium
+
+
+#Create a subset of the dataset with only Price, HD, and Ram where Price is greater than or equal to $1750
+
+
+
+#What percentage of Premium computers were sold?
+
+
+
+#How many Premium computers with CDs were sold?
+
+
+
+#How many Premium computers with CDs priced over $2000 were sold? Show using conditional table analysis
