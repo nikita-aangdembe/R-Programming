@@ -5,7 +5,7 @@ adata <- read.csv("dataset_price_personal_computers.csv")
 View(adata)
 summary(adata)
 
-*** OUTCOME***
+*** OUTPUT***
 
        X            price          speed              hd              ram        
  Min.   :   1   Min.   : 949   Min.   : 25.00   Min.   :  80.0   Min.   : 2.000  
@@ -35,7 +35,7 @@ adatatrans <- transform (adata, cd = as.numeric(cd), multi = as.numeric(multi), 
 View(adatatrans)
 cor(adatatrans)
 
-***OUTCOME***
+*** OUTPUT***
 
                   X       price       speed          hd         ram       screen
 X        1.00000000 -0.19992353  0.38856624  0.55549224  0.26537590  0.184699500
@@ -67,22 +67,22 @@ trend    0.44578018  0.210907431  0.04210738 -0.31855251  1.00000000
 ###Show Min, Max, Median, and Mean of the Price
 
 min(~price, data = adatatrans)
-***OUTCOME***
+*** OUTPUT***
 [1] 949
 
 max(~price, data = adatatrans)
-***OUTCOME***
+*** OUTPUT***
 [1] 5399
 
 median(~price, data = adatatrans)
-***OUTCOME***
+*** OUTPUT***
 [1] 2144
 
 mean(~price, data = adatatrans)
 [1] 2219.577
-***OUTCOME***
+*** OUTPUT***
 
-***OUTCOME***
+*** OUTPUT***
 favstats(~price, data = adatatrans)
  min   Q1 median   Q3  max     mean      sd    n missing
  949 1794   2144 2595 5399 2219.577 580.804 6259       0
@@ -92,7 +92,7 @@ favstats(~price, data = adatatrans)
 ###Show the correlation values between Price, Ram, and Ads
 cor(adatatrans[c("price", "ram", "ads")])
 
-***OUTCOME***
+*** OUTPUT***
 
            price        ram         ads
 price 1.00000000  0.6227482  0.05454047
@@ -117,7 +117,7 @@ View(adatatrans.sub1)
 ###What percentage of Premium computers were sold?
 tally(~premium, data = adatatrans, margins = TRUE)
 
-***OUTCOME***
+*** OUTPUT***
 
 premium
     0     1 Total 
@@ -125,7 +125,7 @@ premium
   
 > tally(~premium, data = adatatrans, margins = TRUE, format = "perc")
 
-***OUTCOME***
+*** OUTPUT***
 
 premium
         0         1     Total 
@@ -136,7 +136,7 @@ premium
 ###How many Premium computers with CDs were sold?
 tally(~premium+cd, data = adatatrans, margins = TRUE
 
-***OUTCOME***
+*** OUTPUT***
 
        cd
 premium    0    1 Total
@@ -149,8 +149,7 @@ premium    0    1 Total
 ###How many Premium computers with CDs priced over $2000 were sold? Show using conditional table analysis
 tally(~premium+cd|price>2000, data = adatatrans, margins = TRUE)
 
-***OUTCOME***
-
+*** OUTPUT***
 , , price > 2000 = TRUE
 
        cd
